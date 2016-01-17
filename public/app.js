@@ -4,9 +4,7 @@
 
 app.controller('MainCtrl', ['$scope', '$http', '$window', function($scope, $http, $window){
 	$scope.getHeader = function(){
-		var stringJSON = $http.post($window.location.href+"api/whoami/");
-		var newWindow = $window.open();
-		newWindow.document.write('<p>'+stringJSON+'</p>')
+		$http.post($window.location.href+"api/whoami/").success(function(data){console.log(data);}).error(function(err){throw err;});
 	};
 }]);//end of controller
   //end of function

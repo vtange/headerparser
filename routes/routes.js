@@ -8,9 +8,25 @@ module.exports = function(app) {
 		console.log("got '/'")
         res.render('index.ejs'); // load the index.ejs file
     });
+	app.get('/api/whoami', function(req, res) {
+		var returnvalue = {
+			"ipaddress": req.ip ||
+					 req.connection.remoteAddress || 
+					 req.socket.remoteAddress ||
+					 req.connection.socket.remoteAddress ||
+					req.headers['x-forwarded-for'],
+			"language": req.headers['accept-language'],
+			"software": req.headers['user-agent'],
+		}
+        res.send(returnvalue); // load the index.ejs file
+    });
 	app.post('/api/whoami', function(req, res) {
 		var returnvalue = {
-			"ipaddress":req.connection.remoteAddress,
+			"ipaddress": req.ip ||
+					 req.connection.remoteAddress || 
+					 req.socket.remoteAddress ||
+					 req.connection.socket.remoteAddress ||
+					req.headers['x-forwarded-for'],
 			"language": req.headers['accept-language'],
 			"software": req.headers['user-agent'],
 		}
