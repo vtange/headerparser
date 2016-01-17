@@ -8,9 +8,12 @@ module.exports = function(app) {
 		console.log("got '/'")
         res.render('index.ejs'); // load the index.ejs file
     });
-	app.get('/api/whoami', function(req, res) {
-		var headers = req.headers;
-		var ip = req.connection.remoteAddress;
-        res.send(ip); // load the index.ejs file
+	app.post('/api/whoami', function(req, res) {
+		var returnvalue = {
+			"ipaddress":req.connection.remoteAddress,
+			"language": req.headers['accept-language'],
+			"software": req.headers['user-agent'],
+		}
+        res.send(JSON.stringify(returnvalue)); // send STRING with JSON data inside
     });
 }
