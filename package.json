@@ -2,7 +2,7 @@
   "name": "headerparser",
   "version": "1.0.0",
   "description": "parse OS info",
-  "main": "index.js",
+  "main": "server.js",
   "dependencies": {
     "express": "^4.13.3",
 	"ejs": "~1.0.0",
