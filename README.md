@@ -1,3 +1,3 @@
 # headerparser
 
-  - POST to url, recieve header data and show it
+Client posts a preset url, recieves header data from Server and shows it
